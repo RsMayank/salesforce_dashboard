@@ -119,7 +119,15 @@ GET /auth/login           → Redirects to Salesforce
 GET /auth/callback        → Handles OAuth response
 GET /api/opportunities    → Fetches Opportunity analytics
 
+✅ Troubleshooting
 
+invalid_client_id / invalid_client → Verify SF_CLIENT_ID and SF_CLIENT_SECRET are copied exactly from Connected App. Use the Copy button in Salesforce to avoid hidden characters.
+
+invalid_grant / redirect_uri_mismatch → Ensure SF_CALLBACK_URL matches the Connected App callback exactly (protocol, host, port, trailing slash).
+
+Cookies not set / CORS issues → Ensure backend cors is configured: origin matches FRONTEND_URL and credentials: true. Frontend fetch must use { credentials: 'include' }.
+
+ERR_CONNECTION_REFUSED → Start backend and confirm it listens on port 3001.
 
 ## 🚧 Future Enhancements
 
